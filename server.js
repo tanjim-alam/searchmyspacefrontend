@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 const corsOption = {
-    origin: "http://localhost:3000",
+    origin: "https://searchmyspace.vercel.app",
     credentials: true
 }
 
