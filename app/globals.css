@@ -1,3 +1,21 @@
+/* styles/globals.css */
+/* styles/globals.css */
+/* styles/globals.css */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@import "tailwindcss/preflight"; /* Adds Tailwind's base styles */
+
+/* Include Tailwind utilities */
+/* @tailwind utilities; */
+/* @tailwind base; */
+/* @tailwind components; */
+@tailwind utilities;
+@plugin "daisyui";
+
+
 @import "tailwindcss";
 
 :root {
@@ -10,6 +28,23 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --primary: #1683cb; 
+  --secondary: #1683cb; 
+  --font-family: 'Inter', sans-serif; 
+  --thirdry: linear-gradient(to right, #f864ba, #6dcdf3)
+}
+/* linear-gradient(to right, #f864ba, #6dcdf3); */
+
+.some-class {
+  background: #1683cb
+}
+
+.another-class {
+  background: linear-gradient(to bottom, #8f3569, #1face2);
+}
+
+.yet-another-class {
+  background: linear-gradient(to left, #8f3569, #1face2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +58,76 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.mobileNavlinkContainer {
+  transition: all .5s ease;
+}
+
+
+/* styles/globals.css */
+
+.heroContainer{
+  width: 100%;
+  /* height: 92vh; */
+  background-image:
+      linear-gradient(to bottom, #0078db69, #0078db5e),
+      url('/banner1.png');
+  /* background-position: center; */
+  /* background-position: center; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: #edf5f8; */
+}
+
+@layer utilities {
+  .scrollBarContainer1::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
+.scrollBarContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 1rem;
+  min-width: 100%;
+}
+
+
+.headingWithBackground {
+  background-image: url('https://livexcellence.com/Assist/vithemes.webp');
+  background-size: cover;
+  background-position: center;  /* Centers the background image */
+  padding: 20px;  /* You can adjust the padding */
+  color: white;  /* Text color */
+  border-radius: 8px;  /* Rounded corners, if needed */
+}
+
+
+.bottomBannerContainer{
+  width: 100%;
+  background-image:
+      linear-gradient(to right, #1683cb87, #1683cb6a),
+      url('https://livexcellence.com/Assist/bottombanner.webp');
+  /* background-position: center; */
+  /* background-position: center; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
