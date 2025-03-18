@@ -109,7 +109,7 @@ function Header() {
           </button>
         </div>
         <div>
-          <ul className="text-white flex flex-col gap-2 mt-4">
+          <ul className="text-white flex flex-col z-50 gap-2 mt-4">
             <li>
               <Link href={"/about"} className="hover:text-yellow-300 transition-colors duration-200">
                 About Us

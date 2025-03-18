@@ -7,7 +7,7 @@ import { AiOutlineBoxPlot } from "react-icons/ai";
 
 function PropertyTypeSection() {
   return (
-    <div className="w-[90%] m-auto py-4 mt-20">
+    <div className="md:w-[90%] w-[95%] m-auto py-4 mt-20">
        <div className="flex flex-col justify-center">
         <h2 className="text-center font-bold text-2xl lg:text-3xl text-black">
             Property Type

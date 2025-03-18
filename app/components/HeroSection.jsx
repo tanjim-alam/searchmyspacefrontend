@@ -69,20 +69,20 @@ function HeroSection() {
   };
 
   return (
-    <div className="heroContainer w-full h-[30vh] sm:h-[40vh] md:h-[30vh] lg:h-[30vh] xl:h-[70vh] relative">
+    <div className="heroContainer w-full h-[40vh] sm:h-[40vh] md:h-[30vh] lg:h-[30vh] xl:h-[70vh] relative">
         <div className="flex justify-center h-full w-full items-center">
-        <h3 className="text-center text-shadow text-5xl font-extrabold text-white">
-            ACQUIRE HOMES DIRECTLY  <br /> <span className=" text-3xl py-1 px-5 rounded bg-[var(--primary)]">FROM DEVELOPERS</span>
+        <h3 className="text-center mt-5 lg:mt-0 text-shadow text-3xl lg:text-5xl font-extrabold text-white">
+            ACQUIRE HOMES DIRECTLY  <br /> <span className=" text-3xl py-1 px-5 rounded lg:bg-[var(--primary)]">FROM DEVELOPERS</span>
         </h3>
         </div>
-      <div className="w-[100%] absolute bottom-[-45px] sm:bottom-[-60px]">
+      <div className="w-[100%] absolute bottom-[-33px] sm:bottom-[-60px] md:bottom-[-30px] lg:bottom-[-65px]">
         <div className="lg:w-[80%] xl:w-[58%] w-[90%] m-auto bg-white shadow-md rounded-md z-50">
           <div className="">
             <div className="relative">
-              <div className="flex justify-center gap-2 px-5 pt-5">
+              <div className="flex justify-center gap-2 px-3 lg:px-5 lg:pt-5 py-4 lg:py-0">
                 <input
                   type="text"
-                  className="w-full p-2 border-b-3 border-thirdry rounded-sm outline-none"
+                  className="w-full p-2 lg:border-b-3 border-thirdry rounded-sm outline-none"
                   placeholder="Search Dream..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}

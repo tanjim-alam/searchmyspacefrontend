@@ -123,7 +123,7 @@ function ProjectViewPage({ purl }) {
             <>
           <div className="xl:w-[85%] flex flex-col lg:flex-row justify-between gap-4 m-auto">
             <div className="xl:w-[72%] w-full flex flex-col xl:gap-4">
-              <div className="w-full lg:hidden block bg-white py-5 px-3 shadow z-50 sticky top-15">
+              <div className="w-full lg:hidden block bg-white py-5 px-3 shadow z-40 sticky top-15">
                 <ul className="flex md:justify-between overflow-x-scroll w-full gap-3 justify-start">
                   <li className="whitespace-nowrap">
                     <Link className="w-full" href={"#overview"}>
@@ -518,7 +518,7 @@ function ProjectViewPage({ purl }) {
                     name="number" id="number_3"/>
                 <input className="p-2 border-b bg-white border-black outline-none rounded-md" type="email"
                     placeholder="E-Mail Address" name="email" id="email_3"/>
-                <button id="submitBtn_3" class="text-[#1e4191] bg-white px-6 py-1 rounded-sm w-full m-auto">
+                <button id="submitBtn_3" className="text-[#1e4191] bg-white px-6 py-1 rounded-sm w-full m-auto">
                     Download
                 </button>
             </form>
