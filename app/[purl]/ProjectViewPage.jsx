@@ -124,7 +124,13 @@ function ProjectViewPage({ purl }) {
           <div className="xl:w-[85%] flex flex-col lg:flex-row justify-between gap-4 m-auto">
             <div className="xl:w-[72%] w-full flex flex-col xl:gap-4">
               <div className="w-full lg:hidden block bg-white py-5 px-3 shadow z-40 sticky top-15">
-                <ul className="flex md:justify-between overflow-x-scroll w-full gap-3 justify-start">
+                <ul className="flex md:justify-between overflow-x-scroll w-full gap-3 justify-start"
+                style={{
+                  scrollBehavior: "smooth",
+                  scrollbarWidth: "none",
+                  whiteSpace: "nowrap",
+                }}
+                >
                   <li className="whitespace-nowrap">
                     <Link className="w-full" href={"#overview"}>
                       Overview
@@ -170,15 +176,24 @@ function ProjectViewPage({ purl }) {
                 <img
                   className="w-full h-[200px] md:h-[300px] lg:h-[400px] xl:rounded-md"
                   src={
-                    project?.mainImage ||
-                    "https://superadmin.homes247.in/images/uploadPropertyImgs/1632735762-1627705458-Artboard%201%20copy%2026-100%20cover%20image.jpg"
-                  }
+                    project?.mainImage}
                   alt=""
                 />
               </div>
+              <span className="bg-[var(--primary)] text-white text-center block md:hidden drop-shadow-md p-1"
+               style={{
+                textShadow: "1px 2px 3px rgba(1, 0, 1, 1)"
+              }}
+              >
+                Booking Open
+              </span>
               <div className="w-full bg-white xl:rounded-md p-5 shadow-md">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-700">
+                  <h1 className="text-3xl font-bold text-center md:text-start text-gray-700"
+                  style={{
+                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)"
+                  }}
+                  >
                     {project?.projectName || ""}
                   </h1>
                 </div>
@@ -394,6 +409,7 @@ function ProjectViewPage({ purl }) {
                     {project &&
                       project?.gallery?.map((item, i) => (
                         <img
+                        key={i}
                           onClick={() => handleImageClick(item)}
                           className=" rounded"
                           src={item}
@@ -415,7 +431,7 @@ function ProjectViewPage({ purl }) {
                 <div className="p-5">
                   <iframe
                     className="rounded-md"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63645297.53659029!2d77.667403!3d13.187559!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1d1ad12b56e9%3A0x7ff62e2150706ba!2sBirla%20Trimaya%20Devanahalli!5e0!3m2!1sen!2sus!4v1741983121755!5m2!1sen!2sus"
+                    src={ project?.mapLink || "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63645297.53659029!2d77.667403!3d13.187559!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1d1ad12b56e9%3A0x7ff62e2150706ba!2sBirla%20Trimaya%20Devanahalli!5e0!3m2!1sen!2sus!4v1741983121755!5m2!1sen!2sus"}
                     width="100%"
                     height="450"
                     style={{ border: 0 }}
@@ -522,7 +538,7 @@ function ProjectViewPage({ purl }) {
                     Download
                 </button>
             </form>
-            <div class="rotate-90 absolute right-[-90px] top-20">
+            <div className="rotate-90 absolute right-[-90px] top-20">
                 <button  
                 onClick={()=>setIsBrochureOpen(!isBrochureOpen)}
                 className="some-class text-white px-2 py-1">

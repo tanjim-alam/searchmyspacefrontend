@@ -28,7 +28,14 @@ function DeveloperList() {
                 </h2>
             </div>
             <div className="mt-6 scroll-wrapper">
-                <div className="scroll-content" id="logoContainer">
+                <div className="scroll-content overflow-x-auto" 
+                id="logoContainer"
+                style={{
+                    scrollBehavior: "smooth",
+                    scrollbarWidth: "none",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                     {developerList && developerList?.map((item, i)=>(
                         <Link href={`/propertylist/${item?.slug}`} key={i}>
                         <img 

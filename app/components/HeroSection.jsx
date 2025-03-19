@@ -23,7 +23,9 @@ function HeroSection() {
   // Fetch search suggestions
   const fetchSuggestions = async (searchQuery) => {
     try {
-      const response = await fetch(`http://localhost:8082/api/v1/project/suggestions?query=${searchQuery}`);
+      // https://searchmyspacebackend-production.up.railway.app/api/v1
+      // const response = await fetch(`http://localhost:8082/api/v1/project/suggestions?query=${searchQuery}`);
+      const response = await fetch(`https://searchmyspacebackend-production.up.railway.app/api/v1/project/suggestions?query=${searchQuery}`);
       const data = await response.json();
       if (response.ok) {
         setSuggestions(data.suggestions || []);
