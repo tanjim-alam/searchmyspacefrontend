@@ -275,7 +275,7 @@ export const updateProject = asyncHandler(async (req, res, next) => {
         pid,
         {
             projectName: projectName || project.projectName,
-            slug: slugify(projectName, {lower:true}) || project.slug,
+            slug: projectName ? slugify(projectName, {lower:true}) : project.slug,
             location: location || project.location,
             mapLink: mapLink || project.mapLink,
             city: city || project.city,
@@ -414,4 +414,18 @@ export const getSuggestions = asyncHandler(async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
+
+export const deleteProject = asyncHandler(async (req, res, next)=>{
+    const {pid} = req.params;
+    if (!pid) {
+        return next(new ApiError(400, "Invalid or missing project ID"));
+    }
+
+    await projectModel.findByIdAndDelete(pid);
+    res.status(200).json({
+        success: true,
+        message: "Project delete successfully",
+    });
+
+})
 

@@ -13,6 +13,7 @@ const app = express();
 
 const corsOption = {
     origin: "https://searchmyspace.vercel.app",
+    // origin: "http://localhost:3000",
     credentials: true
 }
 

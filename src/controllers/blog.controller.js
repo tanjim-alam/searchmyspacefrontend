@@ -67,6 +67,31 @@ export const getBlog = asyncHandler(async (req, res, next)=>{
 });
 
 
+export const getBlogById = asyncHandler(async (req, res, next)=>{
+    const {bid} = req.params;
+    if (!bid) {
+        return res.status(405).json({ success: false, message: "bid is required" })
+    };
+
+    try {
+        const blog = await blogModel.findById(bid);
+        if (!blog) {
+            return res.status(401).json({ success: false, message: "Something went wrong1" })
+        }
+        res.status(200).json({
+            success: true,
+            message: "Blog fetched successfully",
+            blog
+        });
+    } catch (error) {
+        res.status(501).json({
+            success: false,
+            message: error.message,
+        });
+    }
+});
+
+
 export const getAllBlogs = asyncHandler(async (req, res, next)=>{
     try {
         const blogs = await blogModel.find({}).sort({createdAt: -1});
@@ -104,7 +129,7 @@ export const updateBlog = asyncHandler(async (req, res, next)=>{
 
         const updatedBlog = await blogModel.findByIdAndUpdate(bid,{
             title: title || blog.title,
-            slug: slugify(title, {lower:true}) || blog.slug,
+            slug: title ? slugify(title, {lower:true}) : blog.slug,
             content: content || blog.content,
             metaDescription: metaDescription || blog.metaDescription,
             featureImage: uploadedImage || blog.featureImage
@@ -131,8 +156,7 @@ export const deleteBlog = asyncHandler(async (req, res, next)=>{
         await blogModel.findByIdAndDelete(bid);
         res.status(200).json({
             success: true,
-            message: "Blogs delete successfully",
-            blogs
+            message: "Blog delete successfully",
         });
     } catch (error) {
         res.status(501).json({
