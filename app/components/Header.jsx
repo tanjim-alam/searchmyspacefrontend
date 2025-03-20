@@ -70,13 +70,13 @@ function Header() {
         </div>
         <div className="flex items-center gap-6">
           <div className="lg:flex gap-4 text-white font-medium hidden">
-            <Link href={"/about"} className="hover:text-yellow-300 transition-colors duration-200">
+            <Link href={"/about"} className=" transition-colors duration-200">
               About Us
             </Link>
-            <Link href={"/contact"} className="hover:text-yellow-300 transition-colors duration-200">
+            <Link href={"/contact"} className=" transition-colors duration-200">
               Contact Us
             </Link>
-            <Link href={"/career"} className="hover:text-yellow-300 transition-colors duration-200">
+            <Link href={"/career"} className=" transition-colors duration-200">
               Career
             </Link>
           </div>

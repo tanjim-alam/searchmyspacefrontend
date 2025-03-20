@@ -1,42 +1,46 @@
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
+import { FaLocationDot,FaFacebookF,FaInstagram,FaXTwitter,FaLinkedinIn, FaRegCopyright } from "react-icons/fa6";
+import { IoCall,IoMail } from "react-icons/io5";
+
 
 function Footer() {
+    const date = new Date();
+    const year = date.getFullYear();
   return (
+    <>
     <footer>
         <div className="bg-[#161618]">
             <div className="w-[90%] m-auto py-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-0 justify-between">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-3 justify-between">
                     <div>
                         <h4 className="text-white text-xl font-medium">About Us</h4>
                         <div className="text-gray-300 flex flex-col gap-3 mt-2">
-                            <a href="/contact.html">Contact</a>
-                            <a href="#">Home Loan Process</a>
-                            <a href="#">Customer reviews</a>
-                            <a href="#">Our Team</a>
-                            <a href="/career.html">Careers with Proty</a>
-                            <a href="#">Work with us</a>
+                           <p>
+                           At Search My Space, we prioritize building reliable relationships and understanding each customer's needs to streamline buying or selling property. We are committed to excellence and dedicated to ensuring a seamless and impactful experience for every transaction.
+                           </p>
                         </div>
                     </div>
                     <div>
                         <h4 className="text-white text-xl font-medium">Popular House</h4>
                         <div className="text-gray-300 flex flex-col gap-3 mt-2">
-                            <a href="#">#Villa</a>
-                            <a href="#">#Commercial</a>
-                            <a href="#">#Farm House</a>
-                            <a href="#">#Homestay</a>
-                            <a href="#">#apartments</a>
-                            <a href="#">#Land/Plots</a>
+                        <Link href="#">#Apartments</Link>
+                        <Link href="#">#Land/Plots</Link>
+                            <Link href="#">#Villa</Link>
+                            <Link href="#">#Commercial</Link>
+                            <Link href="#">#Farm House</Link>
+                            <Link href="#">#Homestay</Link>
                         </div>
                     </div>
                     <div>
                         <h4 className="text-white text-xl font-medium">Quick links</h4>
                         <div className="text-gray-300 flex flex-col gap-3 mt-2">
-                            <a href="#">Terms of use</a>
-                            <a href="#">Privacy policy</a>
-                            <a href="#">Our services</a>
-                            <a href="/contact.html">Contact support</a>
-                            <a href="#">Pricing Plans</a>
-                            <a href="#">FAQs</a>
+                            <Link href="#">About Us</Link>
+                            <Link href="/contact.html">Contact Us</Link>
+                            <Link href="#">Career</Link>
+                            <Link href="#">Terms of use</Link>
+                            <Link href="#">Privacy policy</Link>
+                            <Link href="#">FAQs</Link>
                         </div>
                     </div>
                     <div>
@@ -45,47 +49,66 @@ function Footer() {
                         src="/logo1.png" alt=""/>
                         <div className="text-gray-300 flex flex-col gap-5 mt-5">
                             <div className="flex items-center gap-1">
-                                <i className='fa fa-map-marker text-white bg-[#1face2] text-3xl px-3 py-2 rounded-full'></i>
+                                <span className='p-2 bg-[var(--primary)] rounded-full '>
+                                    <FaLocationDot />
+                                </span>
                                 <p>
                                     No-11, 2nd Floor, Arya Hub Mall, Whitefield, Bengaluru, Karnataka 560066
                                 </p>
                             </div>
-                            <div className="text-"> 
-                                <i className='fa fa-phone text-white bg-[#1face2] text-3xl px-2.5 py-2 rounded-full'></i>
+                            <div className="flex items-center gap-1"> 
+                                <span className='p-2 bg-[var(--primary)] rounded-full '>
+                                    <IoCall />
+                                </span>
                                 <a href="">+91 80509 33931</a>
                             </div>
-                            <div className="text-"> 
-                                <i className='fa fa-envelope text-white bg-[#1face2] text-3xl px-2.5 py-2.5 rounded-full'></i>
+                            <div className="flex items-center gap-1"> 
+                            <span className='p-2 bg-[var(--primary)] rounded-full '>
+                                    <IoMail />
+                                </span>
                                 <a href="">info@livexcellence.com</a>
                             </div>
                         </div>
                         <div className="mt-5 flex gap-4">
-                            <div className=""> 
-                                <a href="https://www.facebook.com/livexcellence.in/">
-                                    <i className='fa fa-facebook-f text-white bg-[#1face2] text-3xl px-3 py-2 rounded-full'></i>
-                                </a>
+                            <div className="flex items-center gap-1"> 
+                                <Link href="https://www.facebook.com/livexcellence.in/" className='p-2 bg-[#1877F2] text-white rounded-full'>
+                                    <FaFacebookF/>
+                                </Link>
                             </div>
-                            <div className=""> 
-                                <a href="">
-                                    <i className='fa fa-instagram text-white bg-[#1face2] text-3xl px-2.5 py-2 rounded-full'></i>
-                                </a>
+                            <div className="flex items-center gap-1"> 
+                                <Link href="" className='p-2 bg-[#e53d6f] text-white rounded-full'>
+                                <FaInstagram/>
+                                </Link>
                             </div>
-                            <div className=""> 
-                                <a href="https://www.linkedin.com/company/liv-excellence">
-                                    <i className='fa fa-linkedin text-white bg-[#1face2] text-3xl px-2.5 py-2 rounded-full'></i>
-                                </a>
+                            <div className="flex items-center gap-1"> 
+                                <Link href="https://www.linkedin.com/company/liv-excellence" className='p-2 bg-[#0077B5] text-white rounded-full'>
+                                <FaLinkedinIn/>
+                                </Link>
                             </div>
-                            <div className=""> 
-                                <a href="">
-                                    <i className='fa fa-twitter-square text-white bg-[#1face2] text-3xl px-2.5 py-2 rounded-full'></i>
-                                </a>
+                            <div className="flex items-center gap-1"> 
+                                <Link href="" className='p-2 bg-[#1DA1F2] text-white rounded-full'>
+                                <FaXTwitter/>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-     </footer>
+    </footer>
+     <section>
+     <div className="bg-[#161618] border-t-2 border-gray-600">
+         <p className="py-4 text-white font-medium text-center flex justify-center items-center gap-2">
+            <span className='flex items-center gap-1'>
+                Copyright 
+                <FaRegCopyright/> {year}
+            </span>
+            Search My Space | All Rights Resevered
+            
+        </p>
+     </div>
+  </section>
+    </>
   )
 }
 

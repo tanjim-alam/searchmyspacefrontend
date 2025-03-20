@@ -1,22 +1,25 @@
+import Link from 'next/link'
 import React from 'react'
 
-function BlogCard() {
+function BlogCard({blog}) {
   return (
-    <div className="w-[300px] flex flex-col">
+    <Link 
+    href={`/blog/${blog?.slug}`}
+    className="w-[300px] flex flex-col">
   <img 
-    src="https://static.360realtors.com/properties/photos/6749/mini/1729574999_0propertyimage.webp" 
+    src={blog?.featureImage} 
     alt="Property" 
     className="w-full h-48 object-cover rounded-md"
   />
   <div className="flex flex-col py-2 max-w-[300px]">
     <h2 className="text-lg font-medium text-gray-800 mb-2">
-      Report Highlights Growth in Real..
+      {blog?.title.substring(0,60)} {blog?.title?.length > 60 ? "..." : null}
     </h2>
     <span className="text-gray-600 text-sm">
-      The premium residential market in major cities has witnessed significant price appreciation, led by Gurgaon.
+      {blog?.metaDescription.substring(0,150)} {blog?.metaDescription?.length > 150 ? "..." : null}
     </span>
   </div>
-</div>
+</Link>
 
 
   )

@@ -1,10 +1,26 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import BlogCard from "./BlogCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBlogs } from "../redux/slices/blogSlice";
 
 function BlogList() {
   const scrollRef = useRef(null);
+  const dispatch =  useDispatch();
+  const {blogList} = useSelector((state)=>state.blog);
+  console.log(blogList);
+  async function fetchBlogList() {
+    try {
+      await dispatch(getAllBlogs())
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
+
+  useEffect(()=>{
+    fetchBlogList()
+  },[dispatch]);
 
   const blogsData = [1, 1, 2, 3, 4];
   const scrollLeft = () => {
@@ -22,10 +38,10 @@ function BlogList() {
     <div className="md:w-[90%] w-[95%] m-auto pt-8 pb-16">
       <div className="flex flex-col justify-center text-center">
         <h5 className="font-bold text-2xl lg:text-3xl text-black">
-          Popular Choices
+        News & Articles
         </h5>
         <p className="text-lg text-gray-700 mt-2">
-          Where your Dream Homes take shape!
+        Stay updated on fresh insights into real estate trends!
         </p>
       </div>
 
@@ -54,13 +70,13 @@ function BlogList() {
           ref={scrollRef}
           className="flex overflow-x-auto space-x-4 py-4 px-2 scroll-smooth"
           style={{
-            scrollbarWidth: "none", // Firefox
-            msOverflowStyle: "none", // Internet Explorer and Edge
+            scrollbarWidth: "none", 
+            msOverflowStyle: "none",
           }}
         >
-          {blogsData.map((project, i) => (
+          {blogList.map((blog, i) => (
             <div key={i} className="flex-shrink-0 w-[300px]">
-              <BlogCard project={project} />
+              <BlogCard blog={blog} />
             </div>
           ))}
         </div>

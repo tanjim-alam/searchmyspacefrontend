@@ -107,11 +107,17 @@ function ProjectViewPage({ purl }) {
       modal.showModal(); // Show the modal
     }
   };
-  const [isBrochureOpen,setIsBrochureOpen] = useState(false)
+  const [isBrochureOpen,setIsBrochureOpen] = useState(false);
+
+  const [formModelHeading, setFormModelHeading] = useState("")
+  function handleFormModel(e){
+    setFormModelHeading(e);
+    document.getElementById("formModel").showModal()
+  }
   return (
     <div className="bg-[#dbe4e9] min-h-[60vh] lg:py-15 xl:py-20">
       {isLoading ? (
-        <div className="flex justify-center items-center h-full">
+        <div cclassName='h-[90vh] w-full flex justify-center items-center'>
           <Spinner />
         </div>
       ) : (
@@ -232,7 +238,7 @@ function ProjectViewPage({ purl }) {
                 </div>
                 <div className="mt-3 flex justify-end">
                   <button 
-                  onClick={()=>document.getElementById("formModel").showModal()}
+                  onClick={()=>handleFormModel("Download Brochure")}
                   className="some-class p-2 text-white flex justify-center items-center rounded gap-2 text-sm">
                     <FaDownload /> Download Brochure
                   </button>
@@ -520,7 +526,7 @@ function ProjectViewPage({ purl }) {
             </div>
           </div>
           <ImageModel currViewImage={currViewImage} />
-         <FormModel/> 
+         <FormModel projectName={project.projectName} heading={formModelHeading}/> 
           {/* <button className=" some-class text-white px-4 py-2 rotate-90 fixed top-1/2 left-[-66px]">
             Download Brochure
           </button> */}

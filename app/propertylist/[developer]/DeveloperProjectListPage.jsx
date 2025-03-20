@@ -28,7 +28,7 @@ function DeveloperPropertyListPage({slug}) {
   return (
     <div className="bg-[#ecf7f3] min-h-[60vh] py-15 xl:py-20">
       {isLoading ? (
-        <div className="flex justify-center items-center h-full">
+        <div className='h-[90vh] w-full flex justify-center items-center'>
         <Spinner />
       </div>
       ): 
