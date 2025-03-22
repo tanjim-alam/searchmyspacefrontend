@@ -1,29 +1,36 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import LeadForm from "./LeadForm";
 import { IoCall } from "react-icons/io5";
-import { FaWhatsapp } from "react-icons/fa6";
 import { PiWhatsappLogoBold } from "react-icons/pi";
 import Link from "next/link";
+import { ImCross } from "react-icons/im";
+
 
 function FormModel({projectName, heading}) {
-  console.log("projectName",projectName);
+  console.log("projectName",projectName, heading);
+  const [currentHeading, setCurrentHeading] = useState(heading);
+
+  useEffect(() => {
+    setCurrentHeading(heading); // Update when `heading` prop changes
+  }, [heading]);
   return (
-    <dialog id="formModel" className="modal">
-      <div className="modal-box p-0">
+    <dialog id="formModel" className="modal rounded-none">
+      <div className="modal-box p-0 rounded-none">
         <form method="dialog" className="p-0">
-          <button className="btn text-white font-semibold hover:text-black btn-sm btn-circle btn-ghost absolute right-2 top-2">
-            ✕
+          <button className="btn ml-2 text-white font-semibold hover:text-black btn-sm btn-circle btn-ghost absolute right-0 top-0">
+            <ImCross/>
           </button>
         </form>
         {/* <div> */}
-          <div className="">
-            <div className="bg-[var(--primary)] p-2">
+          <div className=" rounded-none">
+            <div className="bg-[var(--primary)] p-2 rounded-none">
               <h4
                 className="text-center lg:text-2xl text-xl font-semibold text-white text-shadow"
                 id="formHeading"
               >
-                {heading || "Enquire Now For More Details"}
+                {currentHeading || "Enquire Now For More Details"}
               </h4>
             </div>
             <div className="flex">
@@ -86,23 +93,23 @@ function FormModel({projectName, heading}) {
                   id="email_1"
                 />
                 <button
-                  className="bg-[var(--primary)] shadow-[0_4px_10px_rgba(0,0,0,0.25)] rounded-md px-6 py-1 text-white rounded-sm w-fit m-auto"
+                  className="bg-[var(--primary)] shadow-[0_4px_10px_rgba(0,0,0,0.25)] cursor-pointer px-6 py-1 text-white rounded-sm w-fit m-auto"
                   id="submitBtn_1"
                 >
                   Submit Now
                 </button>
                 <div className="flex justify-between items-center">
-                  <div className="bg-[var(--primary)] py-1 lg:px-3 px-1 rounded-md shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
+                  <div className="bg-[var(--primary)] py-1 lg:px-4 px-3 rounded-md shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
                     <Link
                       className="text-white flex items-center gap-1 text-sm"
-                      href="https://wa.me/+919380660766?text=Hi!%20I%27m%20Interested%20In%20Adarsh%20Forest%20Glen%20Please%20Share%20Details."
+                      href={`https://wa.me/+919380660766?text=Hi!%20I%27m%20Interested%20In%20${projectName}%20Please%20Share%20Details.`}
                       target="_blank"
                     >
                       <PiWhatsappLogoBold/>
                       WhatsApp
                     </Link>
                   </div>
-                  <div className="bg-[var(--primary)] py-1 lg:px-3 px-1 rounded-md shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
+                  <div className="bg-[var(--primary)] py-1 lg:px-4 px-3 rounded-md shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
                     <Link className="text-white flex items-center gap-1 text-sm" href="tel:+919380660766">
                     <IoCall/>
                       Call Now

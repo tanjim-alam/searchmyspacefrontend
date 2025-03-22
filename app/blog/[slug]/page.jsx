@@ -2,7 +2,7 @@ import React from 'react'
 import BlogViewPage from './BlogViewPage';
 
 export async function generateMetadata({ params }) {
-    const response = await fetch(`http://localhost:8082/api/v1/blog/byslug/${params.slug}`, {
+    const response = await fetch(`https://searchmyspacebackend-production.up.railway.app/api/v1/blog/byslug/${params.slug}`, {
       cache: "no-store",
     });
     if (!response.ok) {

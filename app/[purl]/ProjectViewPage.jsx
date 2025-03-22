@@ -14,6 +14,9 @@ import ImageModel from "../components/ImageModel";
 import Link from "next/link";
 import Spinner from "../components/Spinner";
 import FormModel from "../components/FormModel";
+import BottomBar from "../components/BottomBar";
+import { IoCall, IoMail } from "react-icons/io5";
+import { PiWhatsappLogoBold } from "react-icons/pi";
 
 
 function ProjectViewPage({ purl }) {
@@ -73,17 +76,6 @@ function ProjectViewPage({ purl }) {
     { id: 12, name: "Jogging Track", image: "/jog.svg", alt: "Jogging Track" },
   ];
 
-  const data = [
-    { name: "John Doe", age: 28, position: "Developer" },
-    { name: "Jane Smith", age: 34, position: "Designer" },
-    { name: "Mark Johnson", age: 45, position: "Manager" },
-    {
-      name: "Sarah Williams",
-      age: 29,
-      position: "Product Owner Product Owner",
-    },
-  ];
-
   const scrollRef = useRef(null);
 
   const blogsData = [1, 1, 2, 3, 4];
@@ -110,14 +102,22 @@ function ProjectViewPage({ purl }) {
   const [isBrochureOpen,setIsBrochureOpen] = useState(false);
 
   const [formModelHeading, setFormModelHeading] = useState("")
-  function handleFormModel(e){
+  // function handleFormModel(e){
+  //   setFormModelHeading(e);
+  //   document.getElementById("formModel").showModal()
+  // }
+  function handleFormModel(e) {
     setFormModelHeading(e);
-    document.getElementById("formModel").showModal()
+    
+    const modal = document.getElementById("formModel");
+    modal.close(); // Close first to force re-render
+    setTimeout(() => modal.showModal(), 50); // Reopen after state update
   }
   return (
+    <>
     <div className="bg-[#dbe4e9] min-h-[60vh] lg:py-15 xl:py-20">
       {isLoading ? (
-        <div cclassName='h-[90vh] w-full flex justify-center items-center'>
+        <div className='h-[90vh] w-full flex justify-center items-center'>
           <Spinner />
         </div>
       ) : (
@@ -193,9 +193,9 @@ function ProjectViewPage({ purl }) {
               >
                 Booking Open
               </span>
-              <div className="w-full bg-white xl:rounded-md p-5 shadow-md">
+              <div className="w-full bg-white xl:rounded-md md:p-5 p-0 shadow-md">
                 <div>
-                  <h1 className="text-3xl font-bold text-center md:text-start text-gray-700"
+                  <h1 className="text-3xl pt-2 md:pt-0 font-bold text-center md:text-start text-gray-700"
                   style={{
                     textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)"
                   }}
@@ -205,46 +205,60 @@ function ProjectViewPage({ purl }) {
                 </div>
                 <div className="flex flex-col lg:flex-row justify-between lg:items-center mt-2">
                   <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-2 text-md text-gray-700">
-                      <span className="p-1 rounded-full bg-[#dbe4e9]">
+                    <div className="flex items-center text-shadow justify-center md:justify-start bg-[var(--primary)] md:bg-transparent gap-2 text-md py-1 md:py-0 text-white md:text-gray-700">
+                      <span className="p-1 rounded-full bg-[#dbe4e9] text-black">
                         <FaLayerGroup />
                       </span>
                       <p className="">
                         By {project?.developer?.developer || ""}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 text-md text-gray-700">
-                      <span className="p-1 rounded-full bg-[#dbe4e9]">
+                    <div className="flex items-center text-shadow justify-center md:justify-start bg-[var(--primary)] md:bg-transparent gap-2 text-md py-1 md:py-0 text-white md:text-gray-700">
+                      <span className="p-1 rounded-full bg-[#dbe4e9] text-black">
                         <FaLocationPin />
                       </span>
                       <p className="">
                         {project?.location || ""}, {project?.city?.cityName}
                       </p>
                     </div>
+                    <div className="mt-3 flex justify-center md:hidden">
+                  <button 
+                  onClick={()=>handleFormModel("Download Brochure")}
+                  className="some-class py-2 px-4 text-white cursor-pointer flex justify-center items-center rounded gap-2 text-sm">
+                    <FaDownload /> Download Brochure
+                  </button>
+                </div>
+                <div className="mt-2 flex justify-center md:hidden">
+                  <button 
+                  onClick={()=>handleFormModel("Download Price Cost")}
+                  className="some-class py-2 px-4 text-white cursor-pointer flex justify-center items-center rounded gap-2 text-sm">
+                    <FaDownload /> Download Price Cost
+                  </button>
+                </div>
                   </div>
                   <div className="flex justify-end flex-col gap-2 mt-4 lg:mt-0">
-                    <div className="flex items-center gap-2 text-md text-gray-700">
-                      <span className="p-1 rounded-full bg-[#dbe4e9]">
+                    <div className="flex items-center text-shadow justify-center md:justify-start bg-[var(--primary)] md:bg-transparent gap-2 text-md py-1 md:py-0 text-white md:text-gray-700">
+                      <span className="p-1 rounded-full bg-[#dbe4e9] text-black">
                         <TbBuildingCommunity />
                       </span>
                       <p className="">{project?.unitVariants || ""}</p>
                     </div>
-                    <div className="flex items-center gap-2 text-md text-gray-700">
+                    <div className="flex items-center text-shadow justify-center md:justify-start bg-[var(--primary)] md:bg-transparent gap-2 text-md py-1 md:py-0 text-white md:text-gray-700">
                       <p className="text-lg font-semibold">
                         ₹ {project?.price || ""}
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 flex justify-end">
+                <div className="mt-3 md:flex justify-end hidden">
                   <button 
                   onClick={()=>handleFormModel("Download Brochure")}
-                  className="some-class p-2 text-white flex justify-center items-center rounded gap-2 text-sm">
+                  className="some-class p-2 text-white cursor-pointer flex justify-center items-center rounded gap-2 text-sm">
                     <FaDownload /> Download Brochure
                   </button>
                 </div>
               </div>
-              <div className="w-full lg:block hidden bg-white xl:rounded-md mt-4 xl:mt-0 p-5 shadow-md z-50 sticky top-15">
+              <div className="w-full lg:block hidden bg-white xl:rounded-md mt-4 xl:mt-0 p-5 shadow-md z-40 sticky top-15">
                 <ul className="flex justify-between">
                   <li>
                     <Link href={"#overview"}>Overview</Link>
@@ -526,7 +540,7 @@ function ProjectViewPage({ purl }) {
             </div>
           </div>
           <ImageModel currViewImage={currViewImage} />
-         <FormModel projectName={project.projectName} heading={formModelHeading}/> 
+         <FormModel key={formModelHeading} projectName={project.projectName} heading={formModelHeading}/> 
           {/* <button className=" some-class text-white px-4 py-2 rotate-90 fixed top-1/2 left-[-66px]">
             Download Brochure
           </button> */}
@@ -547,7 +561,7 @@ function ProjectViewPage({ purl }) {
             <div className="rotate-90 absolute right-[-90px] top-20">
                 <button  
                 onClick={()=>setIsBrochureOpen(!isBrochureOpen)}
-                className="some-class text-white px-2 py-1">
+                className="bg-red-700 text-white px-2 py-1">
                     Download Broucher
                 </button>
             </div>
@@ -559,6 +573,26 @@ function ProjectViewPage({ purl }) {
         </>
       )}
     </div>
+    <div className="fixed bottom-0 w-full">
+        <div className="lg:hidden md:hidden flex justify-between bg-[var(--primary)] p-1.5">
+            <Link href="tel:+918317452005" className="bg-[var(--primary)] text-white flex items-center gap-1 py-0.5 px-3 rounded-md border-l border-r">
+                <IoCall/>
+                <span className="text-white">Call</span>
+            </Link>
+            <button  
+            onClick={()=>handleFormModel()}
+            className="bg-[var(--primary)] text-white flex items-center gap-1 py-0.5 px-3 rounded-md border-l border-r">
+                <IoMail/>
+                <span className="text-white">Enquiry</span>
+            </button>
+            <Link href="https://wa.me/+919380660766?text=Hi!%20I%27m%20Interested%20In%20Adarsh%20Forest%20Glen%20Please%20Share%20Details."
+                target="_blank" className="bg-[var(--primary)] text-white flex items-center gap-1 py-0.5 px-3 rounded-md  border-r border-l">
+                <PiWhatsappLogoBold/>
+                <span className="text-white">Whatsapp</span>
+            </Link>
+        </div>
+    </div>
+    </>
   );
 }
 
