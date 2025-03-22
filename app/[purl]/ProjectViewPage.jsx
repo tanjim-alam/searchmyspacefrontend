@@ -243,17 +243,27 @@ function ProjectViewPage({ purl }) {
                       </span>
                       <p className="">{project?.unitVariants || ""}</p>
                     </div>
-                    <div className="flex items-center text-shadow justify-center md:justify-start bg-[var(--primary)] md:bg-transparent gap-2 text-md py-1 md:py-0 text-white md:text-gray-700">
-                      <p className="text-lg font-semibold">
+                    <div className="flex items-center text-shadow justify-center md:justify-start  gap-2 text-md py-1 md:py-0 text-white md:text-gray-700">
+                      <p className="md:text-lg text-2xl text-black font-semibold">
                         ₹ {project?.price || ""}
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 md:flex justify-end hidden">
+                <div className="mt-2 flex justify-center md:hidden">
+                  <button 
+                  onClick={()=>handleFormModel()}
+                  className="some-class py-2 px-5 text-white cursor-pointer flex justify-center items-center gap-2 text-md">
+                    Enquiry Now
+                  </button>
+                </div>
+                <div className="mt-3 md:flex justify-between">
+                  <p className="text-sm text-center md:text-start font-medium mb-2">
+                        <b>Rera No:</b> {project?.reraNo || ""}
+                  </p>
                   <button 
                   onClick={()=>handleFormModel("Download Brochure")}
-                  className="some-class p-2 text-white cursor-pointer flex justify-center items-center rounded gap-2 text-sm">
+                  className="some-class p-2 text-white hidden md:flex cursor-pointer justify-center items-center rounded gap-2 text-sm">
                     <FaDownload /> Download Brochure
                   </button>
                 </div>
@@ -293,46 +303,46 @@ function ProjectViewPage({ purl }) {
                   </p>
                 </div>
                 <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">Project Area</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Project Area</p>
                     <p className="font-medium">{project?.sizeRange || ""}</p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">Project Type</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Project Type</p>
                     <p className="font-medium">{project?.projectType || ""}</p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">Project Status</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Project Status</p>
                     <p className="font-medium">
                       {project?.projectStatus || ""}
                     </p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">Possession on</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Possession on</p>
                     <p className="font-medium">
                       {project?.possessionTime || ""}
                     </p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">unit Variants</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Unit Variants</p>
                     <p className="font-medium">{project?.unitVariants || ""}</p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">Total Land Area</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Total Land Area</p>
                     <p className="font-medium">
                       {project?.totalLandArea || ""}
                     </p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">No. Of Units</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">No. Of Units</p>
                     <p className="font-medium">{project?.noOfUnits || ""}</p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">No. Of Floors</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">No. Of Floors</p>
                     <p className="font-medium">{project?.noOfFloors || ""}</p>
                   </div>
-                  <div className="border flex flex-col gap-2 justify-center lg:items-center border-gray-400 p-3 rounded shadow">
-                    <p className="text-sm text-gray-600">Towers and Blocks</p>
+                  <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
+                    <p className="text-md text-gray-600">Towers and Blocks</p>
                     <p className="font-medium">
                       {project?.towersAndBlocks || ""}
                     </p>
@@ -369,7 +379,7 @@ function ProjectViewPage({ purl }) {
                 </div>
               </div>
               <div
-                className="w-full mt-4 xl:mt-0 bg-white xl:rounded-md shadow-md"
+                className="w-full hidden md:block mt-4 xl:mt-0 bg-white xl:rounded-md shadow-md"
                 id="paymentsplan"
               >
                 <div className="border-b-2 border-gray-300 py-3">
@@ -413,6 +423,35 @@ function ProjectViewPage({ purl }) {
                       ))}
                     </tbody>
                   </table>
+                  
+                </div>
+              </div>
+              <div
+                className="w-full block md:hidden mt-4 xl:mt-0 bg-white xl:rounded-md shadow-md"
+                id="paymentsplan"
+              >
+                <div className="border-b-2 border-gray-300 py-3">
+                  <p className="text-xl font-semibold text-gray-700 text-center">
+                    Payments Plan
+                  </p>
+                </div>
+                <div className="lg:p-5">
+                <div className="p-4 grid grid-cols-1 gap-2 md:hidden">
+                    {
+                      project?.pricePlan?.map((item,i)=>(
+                        <div key={i} className="bg-[#eaeff1] border border-gray-600 flex flex-col p-3 gap-2 justify-between items-center">
+                      <p className="text-2xl font-semibold">{item?.unitType}</p>
+                      <p className="text-lg font-medium">{item?.area}</p>
+                      <p className="text-xl font-semibold">{item.price}</p>
+                      <button 
+                       onClick={()=>handleFormModel("Download Brochure")}
+                       className="some-class py-2 px-4 text-white flex cursor-pointer justify-center items-center gap-2 text-sm">
+                       Request for Price Breakup
+                      </button>
+                    </div>
+                      ))
+                    }
+                  </div>
                 </div>
               </div>
               <div
