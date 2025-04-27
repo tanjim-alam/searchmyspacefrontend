@@ -83,7 +83,7 @@ function Header() {
           <div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white p-2 transition-colors duration-300"
+              className="text-white p-2 transition-colors duration-300 cursor-pointer"
             >
               <FaBarsStaggered size={24} />
             </button>

@@ -109,7 +109,7 @@ function TopProjectSection() {
 
   useEffect(() => {
 
-    startAutoScroll();
+    // startAutoScroll();
 
     return () => clearInterval(autoScrollInterval.current);
   }, []);
@@ -137,7 +137,7 @@ function TopProjectSection() {
           {/* Left Arrow */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
             <button
-              className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold"
+              className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold cursor-pointer"
               onClick={scrollLeft}
             >
               <IoIosArrowBack />
@@ -147,7 +147,7 @@ function TopProjectSection() {
           {/* Right Arrow */}
           <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
             <button
-              className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold"
+              className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold cursor-pointer"
               onClick={scrollRight}
             >
               <IoIosArrowForward />
@@ -158,8 +158,8 @@ function TopProjectSection() {
           <div
             ref={scrollRef}
             className="flex overflow-x-auto space-x-4 py-4 px-2"
-            onMouseEnter={stopAutoScroll}
-            onMouseLeave={resumeAutoScroll}
+            // onMouseEnter={stopAutoScroll}
+            // onMouseLeave={resumeAutoScroll}
             style={{
               scrollBehavior: "smooth",
               scrollbarWidth: "none",
