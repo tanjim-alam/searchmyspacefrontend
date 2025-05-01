@@ -17,6 +17,8 @@ import FormModel from "../components/FormModel";
 import BottomBar from "../components/BottomBar";
 import { IoCall, IoMail } from "react-icons/io5";
 import { PiWhatsappLogoBold } from "react-icons/pi";
+import { setModelData } from "../redux/slices/modalSlice";
+import axiosInstance from "../utils/axiosInstance";
 
 
 function ProjectViewPage({ purl }) {
@@ -101,18 +103,56 @@ function ProjectViewPage({ purl }) {
   };
   const [isBrochureOpen,setIsBrochureOpen] = useState(false);
 
-  const [formModelHeading, setFormModelHeading] = useState("")
-  // function handleFormModel(e){
-  //   setFormModelHeading(e);
-  //   document.getElementById("formModel").showModal()
-  // }
-  function handleFormModel(e) {
-    setFormModelHeading(e);
-    
+  function handleFormModel(projectName, heading = "Enquire Now For More Details") {
+    dispatch(setModelData({projectName, heading}))
     const modal = document.getElementById("formModel");
-    modal.close(); // Close first to force re-render
-    setTimeout(() => modal.showModal(), 50); // Reopen after state update
+    modal.close();
+    setTimeout(() => modal.showModal(), 50);
   }
+
+  const [isDownloading, setIsDownloading] = useState(false);
+    const [leadData, setLeadData] = useState({
+      name: "",
+      email: "",
+      number: "",
+    });
+    function handleInputOnChange(e) {
+      const { name, value } = e.target;
+      setLeadData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  
+    async function handleSubmit(e) {
+      e.preventDefault()
+      setIsDownloading(true);
+      const { name, email, number } = leadData;
+      const data = {
+        name,
+        email,
+        number,
+        company_email: "tanjim11alam@gmail.com",
+        project_name: project?.projectName,
+      };
+      try {
+        const res = await axiosInstance.post("/smtp/sendlead", data);
+        setIsDownloading(false);
+        if (res.data.success) {
+          alert(res?.data?.message);
+          setLeadData({
+            name: "",
+            email: "",
+            number: "",
+          });
+          setIsBrochureOpen(!isBrochureOpen)
+        }
+      } catch (error) {
+        setIsDownloading(false);
+        alert(error.message);
+      }
+    }
+  
   return (
     <>
     <div className="bg-[#dbe4e9] min-h-[60vh] lg:py-15 xl:py-20">
@@ -129,8 +169,8 @@ function ProjectViewPage({ purl }) {
             <>
           <div className="xl:w-[85%] flex flex-col lg:flex-row justify-between gap-4 m-auto">
             <div className="xl:w-[72%] w-full flex flex-col xl:gap-4">
-              <div className="w-full lg:hidden block bg-white py-5 px-3 shadow z-40 sticky top-15">
-                <ul className="flex md:justify-between overflow-x-scroll w-full gap-3 justify-start"
+              <div className="w-full lg:hidden block bg-white py-2 px-3 shadow z-40 sticky top-15">
+                <ul className="flex md:justify-between text-black overflow-x-scroll w-full gap-3 justify-start"
                 style={{
                   scrollBehavior: "smooth",
                   scrollbarWidth: "none",
@@ -252,24 +292,24 @@ function ProjectViewPage({ purl }) {
                 </div>
                 <div className="mt-2 flex justify-center md:hidden">
                   <button 
-                  onClick={()=>handleFormModel()}
+                  onClick={()=>handleFormModel(project?.projectName)}
                   className="some-class py-2 px-5 text-white cursor-pointer flex justify-center items-center gap-2 text-md">
                     Enquiry Now
                   </button>
                 </div>
                 <div className="mt-3 md:flex justify-between">
-                  <p className="text-sm text-center md:text-start font-medium mb-2">
+                  <p className="text-sm text-center md:text-start font-medium mb-2 text-black">
                         <b>Rera No:</b> {project?.reraNo || ""}
                   </p>
                   <button 
-                  onClick={()=>handleFormModel("Download Brochure")}
+                  onClick={()=>handleFormModel(project?.projectName,"Download Brochure")}
                   className="some-class p-2 text-white hidden md:flex cursor-pointer justify-center items-center rounded gap-2 text-sm">
                     <FaDownload /> Download Brochure
                   </button>
                 </div>
               </div>
-              <div className="w-full lg:block hidden bg-white xl:rounded-md mt-4 xl:mt-0 p-5 shadow-md z-40 sticky top-15">
-                <ul className="flex justify-between">
+              <div className="w-full lg:block hidden bg-white xl:rounded-md mt-4 xl:mt-0 py-3 px-5 shadow-md z-40 sticky top-15">
+                <ul className="flex justify-between text-black">
                   <li>
                     <Link href={"#overview"}>Overview</Link>
                   </li>
@@ -305,45 +345,45 @@ function ProjectViewPage({ purl }) {
                 <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Project Area</p>
-                    <p className="font-medium">{project?.sizeRange || ""}</p>
+                    <p className="font-medium text-black">{project?.sizeRange || ""}</p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Project Type</p>
-                    <p className="font-medium">{project?.projectType || ""}</p>
+                    <p className="font-medium text-black">{project?.projectType || ""}</p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Project Status</p>
-                    <p className="font-medium">
+                    <p className="font-medium text-black">
                       {project?.projectStatus || ""}
                     </p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Possession on</p>
-                    <p className="font-medium">
+                    <p className="font-medium text-black">
                       {project?.possessionTime || ""}
                     </p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Unit Variants</p>
-                    <p className="font-medium">{project?.unitVariants || ""}</p>
+                    <p className="font-medium text-black">{project?.unitVariants || ""}</p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Total Land Area</p>
-                    <p className="font-medium">
+                    <p className="font-medium text-black">
                       {project?.totalLandArea || ""}
                     </p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">No. Of Units</p>
-                    <p className="font-medium">{project?.noOfUnits || ""}</p>
+                    <p className="font-medium text-black">{project?.noOfUnits || ""}</p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">No. Of Floors</p>
-                    <p className="font-medium">{project?.noOfFloors || ""}</p>
+                    <p className="font-medium text-black">{project?.noOfFloors || ""}</p>
                   </div>
                   <div className="border flex flex-col gap-2 justify-center items-center border-gray-400 p-3 rounded shadow">
                     <p className="text-md text-gray-600">Towers and Blocks</p>
-                    <p className="font-medium">
+                    <p className="font-medium text-black">
                       {project?.towersAndBlocks || ""}
                     </p>
                   </div>
@@ -370,7 +410,7 @@ function ProjectViewPage({ purl }) {
                           src={item.image}
                           alt=""
                         />
-                        <span className="text-center h-[40%] pt-1 text-sm">
+                        <span className="text-center h-[40%] pt-1 text-sm text-black">
                           {item.name}
                         </span>
                       </div>
@@ -440,9 +480,9 @@ function ProjectViewPage({ purl }) {
                     {
                       project?.pricePlan?.map((item,i)=>(
                         <div key={i} className="bg-[#eaeff1] border border-gray-600 flex flex-col p-3 gap-2 justify-between items-center">
-                      <p className="text-2xl font-semibold">{item?.unitType}</p>
-                      <p className="text-lg font-medium">{item?.area}</p>
-                      <p className="text-xl font-semibold">{item.price}</p>
+                      <p className="text-2xl font-semibold text-black">{item?.unitType}</p>
+                      <p className="text-lg font-medium text-black">{item?.area}</p>
+                      <p className="text-xl font-semibold text-black">{item.price}</p>
                       <button 
                        onClick={()=>handleFormModel("Download Brochure")}
                        className="some-class py-2 px-4 text-white flex cursor-pointer justify-center items-center gap-2 text-sm">
@@ -470,7 +510,7 @@ function ProjectViewPage({ purl }) {
                         <img
                         key={i}
                           onClick={() => handleImageClick(item)}
-                          className=" rounded"
+                          className=" rounded cursor-pointer"
                           src={item}
                           alt=""
                         />
@@ -509,7 +549,7 @@ function ProjectViewPage({ purl }) {
                     About Developer
                   </p>
                 </div>
-                <div className="p-5">
+                <div className="p-5 text-black">
                   <div dangerouslySetInnerHTML={{ __html: project?.about }} />
                 </div>
               </div>
@@ -536,7 +576,7 @@ function ProjectViewPage({ purl }) {
                   <div className="relative">
                     <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
                       <button
-                        className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold"
+                        className="bg-white text-black cursor-pointer shadow-lg rounded-full p-2 text-2xl font-bold"
                         onClick={scrollLeft}
                       >
                         <IoIosArrowBack />
@@ -546,7 +586,7 @@ function ProjectViewPage({ purl }) {
                     {/* Right Arrow */}
                     <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
                       <button
-                        className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold"
+                        className="bg-white text-black cursor-pointer shadow-lg rounded-full p-2 text-2xl font-bold"
                         onClick={scrollRight}
                       >
                         <IoIosArrowForward />
@@ -574,33 +614,42 @@ function ProjectViewPage({ purl }) {
             </div>
             <div className="xl:w-[28%] w-full">
               <div className=" lg:sticky lg:top-20">
-                <LeadForm />
+                <LeadForm projectName={project?.projectName} />
               </div>
             </div>
           </div>
           <ImageModel currViewImage={currViewImage} />
-         <FormModel key={formModelHeading} projectName={project.projectName} heading={formModelHeading}/> 
-          {/* <button className=" some-class text-white px-4 py-2 rotate-90 fixed top-1/2 left-[-66px]">
-            Download Brochure
-          </button> */}
+         <FormModel/> 
           <div className={`fixed z-50 top-1/3 transition-all duration-500 ease-in-out  ${isBrochureOpen ? "left-0" : "left-[-260px] "}`}>
         <div className="relative justify-center items-center w-[260px]">
-            <form action="" className=" flex flex-col py-7 rounded-tr-md rounded-br-md px-5 gap-4 some-class">
-                <h4 className="text-white text-center text-xl font-semibold">Fill Form to Download Broucher</h4>
-                <input className="p-2 border-b bg-white border-black outline-none rounded-md" type="text" placeholder="Name"
-                    name="name" id="name_3"/>
-                <input className="p-2 border-b bg-white border-black outline-none rounded-md" type="text" placeholder="Mobile No"
-                    name="number" id="number_3"/>
-                <input className="p-2 border-b bg-white border-black outline-none rounded-md" type="email"
-                    placeholder="E-Mail Address" name="email" id="email_3"/>
-                <button id="submitBtn_3" className="text-[#1e4191] bg-white px-6 py-1 rounded-sm w-full m-auto">
-                    Download
+            <form action="" className=" text-black flex flex-col py-7 rounded-tr-md rounded-br-md px-5 gap-4 some-class">
+                <h4 className="text-white text-center text-xl font-semibold">Download Broucher</h4>
+                <input className="py-1.5 px-2 border-b bg-white border-black outline-none rounded-md" type="text" placeholder="Name"
+                    name="name"
+                    value={leadData.name}
+                    onChange={handleInputOnChange}
+                    />
+                <input className="py-1.5 px-2 border-b bg-white border-black outline-none rounded-md" type="text" placeholder="Mobile No"
+                    name="number"
+                    value={leadData.number}
+                    onChange={handleInputOnChange}
+                    />
+                <input className="py-1.5 px-2 border-b bg-white border-black outline-none rounded-md" type="email"
+                    placeholder="E-Mail Address" name="email"
+                    value={leadData.email}
+                    onChange={handleInputOnChange}
+                    />
+                <button
+                 className="text-[#1e4191] bg-white cursor-pointer px-6 py-1 rounded-sm w-full m-auto"
+                 onClick={handleSubmit}
+                 >
+                    {isDownloading ? "Downloading" : "Download"}
                 </button>
             </form>
             <div className="rotate-90 absolute right-[-90px] top-20">
                 <button  
                 onClick={()=>setIsBrochureOpen(!isBrochureOpen)}
-                className="bg-red-700 text-white px-2 py-1">
+                className="bg-red-600 text-white px-2 py-1 cursor-pointer">
                     Download Broucher
                 </button>
             </div>

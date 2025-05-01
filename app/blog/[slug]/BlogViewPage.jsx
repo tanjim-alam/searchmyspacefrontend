@@ -12,7 +12,6 @@ function BlogViewPage({slug}) {
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
     const {blog, blogList} = useSelector((state)=>state.blog);
-    console.log(blog)
     async function fetchBlog(){
         try {
             setIsLoading(true)
@@ -27,7 +26,6 @@ function BlogViewPage({slug}) {
     useEffect(()=>{
         fetchBlog();
     },[slug]);
-      console.log(blogList);
   return (
     <div className=' w-[100%] min-h-screen h-[100%] py-10 bg-[#ecf7f3]'>
                 {isLoading ? 
@@ -41,10 +39,10 @@ function BlogViewPage({slug}) {
                                     <div id="my_modal_3" className="lg:w-[100%] xl:w-[70%] w-[100%] shadow-md bg-white p-4">
                                         <div className="flex flex-col gap-4">
                                             <div>
-                                                <h1 className=' text-2xl  md:text-3xl font-medium'>{blog?.title}</h1>
+                                                <h1 className=' text-2xl  md:text-3xl font-medium text-black'>{blog?.title}</h1>
                                             </div>
                                             <div className='flex items-center gap-4'>
-                                                <div className='flex items-center gap-1 bg-slate-200 p-1 text-xs rounded-sm'>
+                                                <div className='flex items-center gap-1 bg-slate-200 text-black p-1 text-xs rounded-sm'>
                                                     <FaCalendarAlt />
                                                     <p>{dateFormeter(blog?.createdAt)}</p>
                                                 </div>
@@ -64,8 +62,8 @@ function BlogViewPage({slug}) {
                                                     <LuNewspaper className='text-2xl' />
                                                 </div>
                                                 <div>
-                                                    <h3 className='text-lg font-medium'>Latest Blogs</h3>
-                                                    <p className=' text-sm'>Updates from around the world</p>
+                                                    <h3 className='text-lg font-medium text-black'>Latest Blogs</h3>
+                                                    <p className=' text-sm text-black'>Updates from around the world</p>
                                                 </div>
                                             </div>
                                             {
@@ -77,7 +75,7 @@ function BlogViewPage({slug}) {
                                                             <img className='w-[90px] h-[64px] rounded-full' src={blog?.featureImage} alt="" />
                                                         </div>
                                                         <div>
-                                                            <h3 className='text-md font-medium'>{(blog?.title).substring(0, 37)}..</h3>
+                                                            <h3 className='text-md font-medium text-black'>{(blog?.title).substring(0, 37)}..</h3>
                                                             <p className=' text-sm text-[var(--primary)]'>Read more</p>
                                                         </div>
                                                     </Link>

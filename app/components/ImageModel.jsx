@@ -13,14 +13,14 @@ function ImageModel({currViewImage}) {
             </button>
           </form>
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-            <button className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold">
+            <button className="bg-white cursor-pointer text-black shadow-lg rounded-full p-2 text-2xl font-bold">
               <IoIosArrowBack />
             </button>
           </div>
 
           {/* Right Arrow */}
           <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-            <button className="bg-white shadow-lg rounded-full p-2 text-2xl font-bold">
+            <button className="bg-white cursor-pointer text-black shadow-lg rounded-full p-2 text-2xl font-bold">
               <IoIosArrowForward />
             </button>
           </div>

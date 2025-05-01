@@ -1,19 +1,22 @@
+"use client"
 import Link from "next/link";
 import React, { useState } from "react";
 import FormModel from "./FormModel";
+import { useDispatch } from "react-redux";
+import { setModelData } from "../redux/slices/modalSlice";
 
 function ProjectCard({ project }) {
-  const [pName, setPName] = useState("");
-  function handleFormModel(e){
-    setPName(e);
+  const dispatch = useDispatch();
+  function handleFormModel(projectName){
+    dispatch(setModelData({projectName}))
     document.getElementById("formModel").showModal()
   }
   return (
-    <div className=" border border-gray-200 rounded-md  bg-white flex-shrink-0 w-[310px]">
+    <div className=" border border-gray-200 rounded shadow  bg-white flex-shrink-0 w-[310px]">
       <Link href={project?.slug || ""}>
         <div className=" relative">
           <img
-            className=" rounded-tl-md rounded-tr-md w-full h-[200px] object-cover"
+            className=" rounded-tl rounded-tr w-full h-[200px] object-cover"
             src={
               project?.mainImage ||
               "https://protywpv5.live.vithemes.com/wp-content/uploads/2024/08/property-01-780x560.webp"
@@ -56,7 +59,7 @@ function ProjectCard({ project }) {
           Enquiry
         </button>
       </div>
-      <FormModel projectName={pName}/>
+      <FormModel/>
     </div>
   );
 }

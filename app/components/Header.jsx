@@ -41,16 +41,18 @@ function Header() {
   };
 
   return (
-    <div className={`w-full bg-gradient-to-r some-class lg:px-6 shadow-lg fixed top-0 left-0 z-50`}>
+    <div className={`w-full bg-gradient-to-r some-class lg:px-6 shadow fixed top-0 left-0 z-50`}>
       <div className="py-2 flex justify-between items-center">
         <div className="flex items-center pl-3 lg:pl-10 gap-6">
           <div>
             <Link href="/">
               <img
-                src="/logo1.png"
+                src="/logo.png"
                 alt="Logo"
-                className="w-[150px] transition-transform duration-300 hover:scale-105"
+                className="w-[150px]"
               />
+              {/* <span className="text-white font-bold text-4xl">BRIK</span>
+              <span>zy</span> */}
             </Link>
           </div>
           <div>
@@ -97,9 +99,9 @@ function Header() {
       >
         <div className="flex items-center justify-between border-b-3 border-gray-400 pb-3">
           <img
-            src="/logo1.png"
+            src="/logo.png"
             alt="Logo"
-            className="w-[150px] transition-transform duration-300 hover:scale-105"
+            className="w-[150px]"
           />
           <button
             onClick={() => setIsMenuOpen(false)}

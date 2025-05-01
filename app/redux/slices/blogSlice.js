@@ -12,7 +12,6 @@ export const getBlog = createAsyncThunk("/getblog", async (slug) => {
         const res = axiosInstance.get(`/blog/byslug/${slug}`);
         return (await res).data;
     } catch (error) {
-        // console.log(error.message);
         throw new Error(error.message)
     }
 });
@@ -33,11 +32,9 @@ const blogSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getBlog.fulfilled, (state, action) => {
-                // console.log(action);
                 state.blog = action?.payload?.blog;
             })
             .addCase(getAllBlogs.fulfilled, (state, action) => {
-                // console.log(action);
                 state.blogList = action?.payload?.blogs;
             })
     }

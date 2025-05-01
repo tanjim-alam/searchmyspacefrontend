@@ -16,11 +16,11 @@ export async function generateMetadata({ params }) {
   const project = await data.project;
 
   return {
-    title: project.projectName,
-    description: project.projectDescription || project.projectName,
+    title: project?.title || project.projectName,
+    description: project.metaDescription || project.projectName,
     openGraph: {
-      title: project.projectName,
-      description: project.projectDescription || project.projectName,
+      title: project.title || project.projectName,
+      description: project.metaDescription || project.projectName,
       images: [project.projectImage || "/default-image.jpg"],
     },
   };

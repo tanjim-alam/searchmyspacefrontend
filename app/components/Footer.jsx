@@ -17,7 +17,7 @@ function Footer() {
                         <h4 className="text-white text-xl font-medium">About Us</h4>
                         <div className="text-gray-300 flex flex-col gap-3 mt-2">
                            <p>
-                           At Search My Space, we prioritize building reliable relationships and understanding each customer's needs to streamline buying or selling property. We are committed to excellence and dedicated to ensuring a seamless and impactful experience for every transaction.
+                           At Brikzy, we prioritize building reliable relationships and understanding each customer's needs to streamline buying or selling property. We are committed to excellence and dedicated to ensuring a seamless and impactful experience for every transaction.
                            </p>
                         </div>
                     </div>
@@ -45,8 +45,8 @@ function Footer() {
                     </div>
                     <div>
                         <img
-                        className="w-[200px]" 
-                        src="/logo1.png" alt=""/>
+                        className="w-[180px] cursor-pointer" 
+                        src="/logo.png" alt=""/>
                         <div className="text-gray-300 flex flex-col gap-5 mt-5">
                             <div className="flex items-center gap-1">
                                 <span className='p-2 bg-[var(--primary)] rounded-full '>
@@ -60,18 +60,18 @@ function Footer() {
                                 <span className='p-2 bg-[var(--primary)] rounded-full '>
                                     <IoCall />
                                 </span>
-                                <a href="">+91 80509 33931</a>
+                                <a href="">+91 931101119</a>
                             </div>
                             <div className="flex items-center gap-1"> 
                             <span className='p-2 bg-[var(--primary)] rounded-full '>
                                     <IoMail />
                                 </span>
-                                <a href="">info@livexcellence.com</a>
+                                <a href="">info@brikzy.in</a>
                             </div>
                         </div>
                         <div className="mt-5 flex gap-4">
                             <div className="flex items-center gap-1"> 
-                                <Link href="https://www.facebook.com/livexcellence.in/" className='p-2 bg-[#1877F2] text-white rounded-full'>
+                                <Link href="#" className='p-2 bg-[#1877F2] text-white rounded-full'>
                                     <FaFacebookF/>
                                 </Link>
                             </div>
@@ -81,7 +81,7 @@ function Footer() {
                                 </Link>
                             </div>
                             <div className="flex items-center gap-1"> 
-                                <Link href="https://www.linkedin.com/company/liv-excellence" className='p-2 bg-[#0077B5] text-white rounded-full'>
+                                <Link href="#" className='p-2 bg-[#0077B5] text-white rounded-full'>
                                 <FaLinkedinIn/>
                                 </Link>
                             </div>
@@ -103,7 +103,7 @@ function Footer() {
                 Copyright 
                 <FaRegCopyright/> {year}
             </span>
-            Search My Space | All Rights Resevered
+            Brikzy Reality | All Rights Resevered
             
         </p>
      </div>

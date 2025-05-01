@@ -21,9 +21,9 @@ function TrustedSection() {
                             </p>
                         </div>
                         <div>
-                            <p className="text-xl font-bold">
+                            <h4 className="text-xl font-bold text-black">
                                 Explore Great Neighborhoods
-                            </p>
+                            </h4>
                         </div>
                     </div>
                     <div>
@@ -32,7 +32,7 @@ function TrustedSection() {
                         </p>
                     </div>
                     <div>
-                        <button className="text-[#1face2] cursor-pointer hover:border-b-2 hover:border-[#8f3569] font-medium">Learn more</button>
+                        <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
                 <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
@@ -43,9 +43,9 @@ function TrustedSection() {
                             </p>
                         </div>
                         <div>
-                            <p className="text-xl font-bold">
+                            <h4 className="text-xl font-bold text-black">
                                 Find the Best Agent for You
-                            </p>
+                            </h4>
                         </div>
                     </div>
                     <div>
@@ -54,7 +54,7 @@ function TrustedSection() {
                         </p>
                     </div>
                     <div>
-                        <button className="text-[#1face2] cursor-pointer hover:border-b-2 hover:border-[#8f3569] font-medium">Learn more</button>
+                        <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
                 <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
@@ -65,9 +65,9 @@ function TrustedSection() {
                             </p>
                         </div>
                         <div>
-                            <p className="text-xl font-bold">
+                            <h4 className="text-xl font-bold text-black">
                                 Find highly rated apartments
-                            </p>
+                            </h4>
                         </div>
                     </div>
                     <div>
@@ -76,7 +76,7 @@ function TrustedSection() {
                         </p>
                     </div>
                     <div>
-                        <button className="text-[#1face2] cursor-pointer hover:border-b-2 hover:border-[#8f3569] font-medium">Learn more</button>
+                        <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
                 <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
@@ -87,9 +87,9 @@ function TrustedSection() {
                             </p>
                         </div>
                         <div>
-                            <p className="text-xl font-bold">
+                            <h4 className="text-xl font-bold text-black">
                                 Search Recent Property Sales
-                            </p>
+                            </h4>
                         </div>
                     </div>
                     <div>
@@ -98,13 +98,13 @@ function TrustedSection() {
                         </p>
                     </div>
                     <div>
-                        <button className="text-[#1face2] cursor-pointer hover:border-b-2 hover:border-[#8f3569] font-medium">Learn more</button>
+                        <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
             </div>
         </div>
         <div className="trustedBox2 w-[50%] hidden xl:block">
-            <img className="mt-32" src="https://livexcellence.com/Assist/Trusted.webp" alt=""/>
+            <img className="mt-32" src="/trusted.webp" alt=""/>
         </div>
     </div>
  </div>

@@ -14,7 +14,7 @@ import BottomBanner from "./components/BottomBanner";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-white">
       {/* <h1 className=" text-[var(--primary)]">SMP</h1> */}
       {/* <Header/> */}
       <HeroSection/>

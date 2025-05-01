@@ -9,7 +9,6 @@ function BlogList() {
   const scrollRef = useRef(null);
   const dispatch =  useDispatch();
   const {blogList} = useSelector((state)=>state.blog);
-  console.log(blogList);
   async function fetchBlogList() {
     try {
       await dispatch(getAllBlogs())

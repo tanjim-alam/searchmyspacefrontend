@@ -10,7 +10,7 @@ function ProjectCard2({project}) {
     const router = useRouter();
   return (
     <div onClick={()=>router.push(`/${project?.slug}`)}
-    className=" shadow rounded flex gap-5 p-3 bg-white">
+    className=" shadow rounded flex gap-5 p-3 bg-white cursor-pointer">
       <div className="h-full md:block hidden w-[40%]">
         <img
           className="h-full w-full rounded"
@@ -29,7 +29,7 @@ function ProjectCard2({project}) {
           </div>
           <div className="w-[60%] md:w-full md:flex md:flex-col md:gap-2">
             <div>
-              <h4 className="font-semibold">
+              <h4 className="font-semibold text-black">
               {project?.projectName.substring(0,32)} {project?.projectName?.length > 32 ? "..." : null}
               </h4>
             </div>

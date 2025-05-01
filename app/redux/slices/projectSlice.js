@@ -67,21 +67,17 @@ const postSlice = createSlice({
                 state.projectList = action?.payload?.projects;
             })
             .addCase(getProject.fulfilled, (state, action) => {
-                // console.log(action)
                 state.project = action?.payload?.project;
             })
             .addCase(getSearchProject.fulfilled, (state,action)=>{
-                // console.log(action?.payload);
                 if(action?.payload?.projects){
                     state.searchProjectList = action?.payload?.projects;
                 }
             })
             .addCase(getProjectByCityName.fulfilled, (state, action) => {
-                // console.log(action)
                 state.projectListByCity = action?.payload?.projects;
             })
             .addCase(getProjectByDeveloper.fulfilled, (state, action) => {
-                // console.log(action)
                 state.projectListByDeveloper = action?.payload?.projects;
             })
     }
