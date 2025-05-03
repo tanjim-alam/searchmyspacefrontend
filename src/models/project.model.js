@@ -33,6 +33,15 @@ const pricePlanSchema = new Schema({
     }
 });
 
+const faqSchema = new Schema({
+    question:{
+        type: String,
+    },
+    answer: {
+        type: String,
+    }
+})
+
 const projectSchema = new mongoose.Schema({
     projectName: {
         type: String,
@@ -41,6 +50,15 @@ const projectSchema = new mongoose.Schema({
     slug:{
         type: String,
         // required: true
+    },
+    title:{
+        type:String
+    },
+    metaDescription:{
+        type:String
+    },
+    overviewContent:{
+        type:String
     },
     mainImage:{
         type:String
@@ -117,6 +135,7 @@ const projectSchema = new mongoose.Schema({
     floorPlan:[floorPlanSchema],
     pricePlan: [pricePlanSchema],
     gallery: [],
+    faqList:[faqSchema]
 }, { timestamps: true });
 
 

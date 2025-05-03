@@ -10,6 +10,9 @@ import cityModel from "../models/city.model.js";
 export const addProject = asyncHandler(async (req, res, next) => {
     const {
         projectName,
+        title,
+        metaDescription,
+        overviewContent,
         location,
         mapLink,
         city,
@@ -48,6 +51,15 @@ export const addProject = asyncHandler(async (req, res, next) => {
         }
     }
 
+    let faqList = [];
+    if(req.body.faqList){
+        try {
+            faqList = JSON.parse(req.body.faqList);
+        } catch (error) {
+            return res.status(400).json({ success: false, message: "Invalid pricePlan format" });
+        }
+    }
+
     // Upload floorPlan images to Cloudinary and attach to floorPlan array
     if (req.files?.floorPlanImages) {
         for (let i = 0; i < req.files.floorPlanImages.length; i++) {
@@ -77,6 +89,9 @@ export const addProject = asyncHandler(async (req, res, next) => {
     const project = await projectModel.create({
         projectName,
         slug: slugify(projectName, {lower:true}),
+        title,
+        metaDescription,
+        overviewContent,
         location,
         mapLink,
         city,
@@ -95,7 +110,8 @@ export const addProject = asyncHandler(async (req, res, next) => {
         towersAndBlocks,
         reraNo,
         floorPlan,  
-        pricePlan,  
+        pricePlan,
+        faqList,  
         gallery: uploadedGalleryImages,
         mainImage: uploadedImage,
     });
@@ -179,6 +195,9 @@ export const updateProject = asyncHandler(async (req, res, next) => {
 
     const {
         projectName,
+        title,
+        metaDescription,
+        overviewContent,
         location,
         mapLink,
         city,
@@ -198,8 +217,6 @@ export const updateProject = asyncHandler(async (req, res, next) => {
         reraNo,
     } = req.body;
 
-
-
     // Parse JSON fields safely
     let floorPlan = [];
     let pricePlan = [];
@@ -215,6 +232,15 @@ export const updateProject = asyncHandler(async (req, res, next) => {
         if (req.body.pricePlan) pricePlan = JSON.parse(req.body.pricePlan);
     } catch (error) {
         return res.status(400).json({ success: false, message: "Invalid JSON format in request body" });
+    }
+
+    let faqList = [];
+    if(req.body.faqList){
+        try {
+            faqList = JSON.parse(req.body.faqList);
+        } catch (error) {
+            return res.status(400).json({ success: false, message: "Invalid Faq format" });
+        }
     }
 
     const project = await projectModel.findById(pid);
@@ -254,16 +280,6 @@ export const updateProject = asyncHandler(async (req, res, next) => {
     }
 
     if (newGalleryImage) {
-        // try {
-        //     uploadedGalleryImages = await Promise.all(
-        //         req.files.gallery.map(async (image) => {
-        //             return await uploadOnCloudinary(image.path);
-        //         })
-        //     );
-        // } catch (error) {
-        //     console.error("Error uploading gallery images:", error);
-        // }
-
         for(const image of newGalleryImage){
             const uploadedImage = await uploadOnCloudinary(image.path);
             uploadedGalleryImages.push(uploadedImage)
@@ -276,6 +292,9 @@ export const updateProject = asyncHandler(async (req, res, next) => {
         {
             projectName: projectName || project.projectName,
             slug: projectName ? slugify(projectName, {lower:true}) : project.slug,
+            title: title || project.title,
+            metaDescription: metaDescription || project.metaDescription,
+            overviewContent: overviewContent || project.overviewContent,
             location: location || project.location,
             mapLink: mapLink || project.mapLink,
             city: city || project.city,
@@ -293,7 +312,8 @@ export const updateProject = asyncHandler(async (req, res, next) => {
             possessionTime: possessionTime || project.possessionTime,
             towersAndBlocks: towersAndBlocks || project.towersAndBlocks,
             reraNo: reraNo || project.reraNo,
-            floorPlan,  
+            floorPlan: floorPlan || project.floorPlan,
+            faqList: faqList || project.faqList,  
             pricePlan: pricePlan || project.pricePlan,  
             gallery: uploadedGalleryImages,
             mainImage: uploadedMainImage,
