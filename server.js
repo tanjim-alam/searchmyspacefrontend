@@ -14,7 +14,7 @@ const app = express();
 
 const corsOption = {
     // origin: "https://searchmyspace.vercel.app",
-    origin: ["http://localhost:3000", "https://searchmyspace.vercel.app", "https://brikzy.in"],
+    origin: ["http://localhost:3000", "https://searchmyspace.vercel.app", "https://www.brikzy.in"],
     credentials: true
 }
 

@@ -60,6 +60,15 @@ const projectSchema = new mongoose.Schema({
     overviewContent:{
         type:String
     },
+    amenitiesContent:{
+        type:String
+    },
+    pricePlanContent:{
+        type:String
+    },
+    locationContent:{
+        type:String
+    },
     mainImage:{
         type:String
     },
