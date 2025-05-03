@@ -1,10 +1,16 @@
-import React from 'react'
-import ProjectViewPage from './ProjectViewPage';
+// app/[purl]/page.jsx
+
+import React from "react";
+import ProjectViewPage from "./ProjectViewPage";
 
 export async function generateMetadata({ params }) {
-  const response = await fetch(`https://searchmyspacebackend-production.up.railway.app/api/v1/project/by/${params.purl}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `https://searchmyspacebackend-production.up.railway.app/api/v1/project/by/${params.purl}`,
+    {
+      cache: "no-store",
+    }
+  );
+
   if (!response.ok) {
     return {
       title: "Project Not Found",
@@ -13,7 +19,7 @@ export async function generateMetadata({ params }) {
   }
 
   const data = await response.json();
-  const project = await data.project;
+  const project = data.project;
 
   return {
     title: project?.title || project.projectName,
@@ -26,9 +32,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-function page({params}) {
-    const {purl} = params;
-  return <ProjectViewPage purl={purl}/>
+// ✅ Function name must be PascalCase ("Page")
+export default function Page({ params }) {
+  const { purl } = params;
+  return <ProjectViewPage purl={purl} />;
 }
-
-export default page

@@ -60,13 +60,14 @@ function LeadForm({ projectName }) {
       </div>
       <div className="text-black flex flex-col gap-2">
         <div className="flex flex-col gap-1">
-          <label htmlFor="" className="">
+          <label htmlFor="name" className="">
             Name*
           </label>
           <input
             className="py-1 px-4 border border-gray-400 rounded-2xl outline-none"
             type="text"
             placeholder="Enter Name*..."
+            id="name"
             name="name"
             value={leadData.name}
             onChange={handleInputOnChange}
@@ -74,13 +75,14 @@ function LeadForm({ projectName }) {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="" className="">
+          <label htmlFor="email" className="">
             Email*
           </label>
           <input
             className="py-1 px-4 border border-gray-400 rounded-2xl outline-none"
             type="text"
             placeholder="Enter Email*..."
+            id="email"
             name="email"
             value={leadData.email}
             onChange={handleInputOnChange}
@@ -88,12 +90,13 @@ function LeadForm({ projectName }) {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="" className="">
+          <label htmlFor="number" className="">
             Phone*
           </label>
           <input
             className="py-1 px-4 border border-gray-400 rounded-2xl outline-none"
             type="text"
+            id="number"
             placeholder="+9192324..."
             name="number"
             value={leadData.number}
@@ -102,12 +105,13 @@ function LeadForm({ projectName }) {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="" className="">
+          <label htmlFor="message" className="">
             Message
           </label>
           <textarea
             className="py-1 px-4 border border-gray-400 rounded-xl outline-none"
             type="text"
+            id="message"
             placeholder="Enter Message..."
             name="message"
             value={leadData.message}

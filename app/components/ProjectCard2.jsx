@@ -2,8 +2,6 @@ import React from "react";
 import { FaLayerGroup, FaDownload } from "react-icons/fa";
 import { FaLocationPin } from "react-icons/fa6";
 import { TbBuildingCommunity } from "react-icons/tb";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function ProjectCard2({project}) {

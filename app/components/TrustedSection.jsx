@@ -13,7 +13,7 @@ function TrustedSection() {
                 We connect you directly to the person that knows the most about a property for sale, the listing agent
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
-                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
+                <div className="bg-white flex flex-col gap-4 shadow-lg p-6 rounded-xl h-fit">
                     <div className="flex gap-2 items-center">
                         <div>
                         <p className=' text-white some-class text-3xl p-3 rounded-full'>
@@ -35,7 +35,7 @@ function TrustedSection() {
                         <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
-                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
+                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit shadow-lg">
                     <div className="flex gap-2 items-center">
                         <div>
                         <p className=' text-white some-class text-3xl p-3 rounded-full'>
@@ -57,7 +57,7 @@ function TrustedSection() {
                         <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
-                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
+                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit shadow-lg">
                     <div className="flex gap-2 items-center">
                         <div>
                         <p className=' text-white some-class text-3xl p-3 rounded-full'>
@@ -79,7 +79,7 @@ function TrustedSection() {
                         <button className="text-[#1face2] cursor-pointer font-medium">Learn more</button>
                     </div>
                 </div>
-                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit">
+                <div className="bg-white flex flex-col gap-4 p-6 rounded-xl h-fit shadow-lg">
                     <div className="flex gap-2 items-center">
                         <div>
                         <p className=' text-white some-class text-3xl p-3 rounded-full'>
@@ -104,7 +104,7 @@ function TrustedSection() {
             </div>
         </div>
         <div className="trustedBox2 w-[50%] hidden xl:block">
-            <img className="mt-32" src="/trusted.webp" alt=""/>
+            <img className="mt-16" src="/trusted.webp" alt=""/>
         </div>
     </div>
  </div>
