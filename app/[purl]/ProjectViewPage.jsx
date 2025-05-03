@@ -90,7 +90,7 @@ function ProjectViewPage({ purl }) {
         ))}
       </div>
       <div className="px-5">
-        <div dangerouslySetInnerHTML={{ __html: project.overviewContent }} />
+        <div dangerouslySetInnerHTML={{ __html: project?.overviewContent }} />
       </div>
     </section>
   );
@@ -102,6 +102,9 @@ function ProjectViewPage({ purl }) {
       </div>
       <div className="p-5 w-full flex justify-center items-center">
         <Amenities />
+      </div>
+      <div className="px-5 pb-3">
+        <div dangerouslySetInnerHTML={{ __html: project?.amenitiesContent }} />
       </div>
     </section>
   );
@@ -145,6 +148,9 @@ function ProjectViewPage({ purl }) {
             </tbody>
           </table>
         </div>
+        <div className="px-5 pb-3">
+        <div dangerouslySetInnerHTML={{ __html: project?.pricePlanContent }} />
+      </div>
       </section>
 
       {/* Mobile Payment Plan */}
@@ -177,6 +183,9 @@ function ProjectViewPage({ purl }) {
             ))}
           </div>
         </div>
+        <div className="px-5">
+        <div dangerouslySetInnerHTML={{ __html: project.pricePlanContent }} />
+      </div>
       </section>
     </>
   );
@@ -218,6 +227,9 @@ function ProjectViewPage({ purl }) {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
+      </div>
+      <div className="px-5 pb-3">
+        <div dangerouslySetInnerHTML={{ __html: project?.locationContent }} />
       </div>
     </section>
   );
