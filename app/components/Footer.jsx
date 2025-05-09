@@ -103,7 +103,7 @@ function Footer() {
                 Copyright 
                 <FaRegCopyright/> {year}
             </span>
-            Brikzy Reality | All Rights Resevered
+            Brikzy Realty | All Rights Resevered
             
         </p>
      </div>

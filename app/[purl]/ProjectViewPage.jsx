@@ -23,10 +23,11 @@ function ProjectViewPage({ purl }) {
   const [error, setError] = useState(null);
   const { project } = useSelector((state) => state.project);
   const [currId, setCurrId] = useState(null);
-  
+
   function handleFaq(id) {
-    setCurrId(currId === id ? null : id); // Toggle FAQ open/close based on id
+    setCurrId(currId === id ? null : id);
   }
+  console.log("currId", currId)
   async function fetchProjectData() {
     try {
       setIsLoading(true);
@@ -72,7 +73,7 @@ function ProjectViewPage({ purl }) {
         {[
           { label: "Project Area", value: project?.sizeRange },
           { label: "Project Type", value: project?.projectType },
-          { label: "Project Status", value: project?.projectStatus },
+          { label: "Project Status", value: project?.status },
           { label: "Possession on", value: project?.possessionTime },
           { label: "Unit Variants", value: project?.unitVariants },
           { label: "Total Land Area", value: project?.totalLandArea },
@@ -89,7 +90,7 @@ function ProjectViewPage({ purl }) {
           </div>
         ))}
       </div>
-      <div className="px-5">
+      <div className="px-5 pb-5 text-gray-700">
         <div dangerouslySetInnerHTML={{ __html: project?.overviewContent }} />
       </div>
     </section>
@@ -103,12 +104,12 @@ function ProjectViewPage({ purl }) {
       <div className="p-5 w-full flex justify-center items-center">
         <Amenities />
       </div>
-      <div className="px-5 pb-3">
+      <div className="px-5 pb-5 text-gray-700">
         <div dangerouslySetInnerHTML={{ __html: project?.amenitiesContent }} />
       </div>
     </section>
   );
-
+  
   const renderPaymentPlanSection = () => (
     <>
       {/* Desktop Payment Plan */}
@@ -140,15 +141,26 @@ function ProjectViewPage({ purl }) {
                   <td className="py-3 px-4 text-center text-gray-700">
                     {item?.area}
                   </td>
-                  <td className="py-3 px-4 text-right text-gray-700">
+                  <td className="py-3 px-4 text-right text-gray-700 flex justify-end gap-1 items-center">
                     {item.price}
+                    <button
+                  onClick={() =>
+                            handleFormModel(
+                              project?.projectName,
+                              "Download Price Cost"
+                            )
+                          }
+                  className="some-class py-1 px-2 text-white flex cursor-pointer justify-center items-center gap-2 text-xs"
+                >
+                  Enquire Now
+                </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="px-5 pb-3">
+        <div className="px-5 pb-5 text-gray-700">
         <div dangerouslySetInnerHTML={{ __html: project?.pricePlanContent }} />
       </div>
       </section>
@@ -174,7 +186,12 @@ function ProjectViewPage({ purl }) {
                 <p className="text-lg font-medium text-black">{item?.area}</p>
                 <p className="text-xl font-semibold text-black">{item.price}</p>
                 <button
-                  onClick={() => handleFormModel("Download Brochure")}
+                  onClick={() =>
+                            handleFormModel(
+                              project?.projectName,
+                              "Download Price Cost"
+                            )
+                          }
                   className="some-class py-2 px-4 text-white flex cursor-pointer justify-center items-center gap-2 text-sm"
                 >
                   Request for Price Breakup
@@ -183,7 +200,7 @@ function ProjectViewPage({ purl }) {
             ))}
           </div>
         </div>
-        <div className="px-5">
+        <div className="px-5 pb-5 text-gray-700">
         <div dangerouslySetInnerHTML={{ __html: project.pricePlanContent }} />
       </div>
       </section>
@@ -217,9 +234,10 @@ function ProjectViewPage({ purl }) {
         <p className="text-xl font-semibold text-gray-700">Location</p>
       </div>
       <div className="p-5">
-        <iframe
+        {project?.mapLink ? (
+          <iframe
           className="rounded-md"
-          src={project?.mapLink || "https://www.google.com/maps/embed?..."}
+          src={project?.mapLink}
           width="100%"
           height="450"
           style={{ border: 0 }}
@@ -227,8 +245,9 @@ function ProjectViewPage({ purl }) {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
+        ): null}
       </div>
-      <div className="px-5 pb-3">
+      <div className="px-5 pb-5 text-gray-700">
         <div dangerouslySetInnerHTML={{ __html: project?.locationContent }} />
       </div>
     </section>
@@ -266,25 +285,25 @@ function ProjectViewPage({ purl }) {
           Frequently Asked question
         </p>
       </div>
-      <div className="p-5 text-black">
+      <div className="p-5 text-black flex flex-col gap-3">
         {project?.faqList?.map((item, i) => (
           <div key={i} className="overflow-hidden">
             <div
-              onClick={() => handleFaq(item.id)}
+              onClick={() => handleFaq(item._id)}
               className="bg-[var(--primary)] text-white shadow-md rounded-md p-2 cursor-pointer"
             >
               <h4 className="text-lg font-semibold flex justify-between items-center">
                 {item?.question}
                 <FaArrowAltCircleDown
                   className={`transition-transform duration-300 ${
-                    currId === item.id ? "rotate-180" : ""
+                    currId === item._id ? "rotate-180" : ""
                   }`}
                 />
               </h4>
             </div>
             <div
               className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                currId === item.id ? "max-h-screen" : "max-h-0"
+                currId === item._id ? "max-h-screen" : "max-h-0"
               }`}
             >
               <p className=" shadow-md p-2 rounded-md text-slate-800 text-[17px]">
@@ -297,19 +316,13 @@ function ProjectViewPage({ purl }) {
     </section>
   );
 
+  if (isLoading) return <div className="bg-[#dbe4e9] min-h-[80vh] lg:py-15 xl:py-20 flex justify-center items-center"> <Spinner /></div>;
+  if (error) return <div className="text-red-500 min-h-[80vh] lg:py-15 xl:py-20 flex justify-center items-center">Error: {error}</div>;
+
   return (
     <>
       <div className="bg-[#dbe4e9] min-h-[60vh] lg:py-15 xl:py-20">
-        {isLoading ? (
-          <div className="h-[90vh] w-full flex justify-center items-center">
-            <Spinner />
-          </div>
-        ) : (
-          <>
-            {error ? (
-              <p className="text-center text-lg font-semibold">{error}</p>
-            ) : (
-              <>
+      <>
                 <div className="xl:w-[85%] flex flex-col lg:flex-row justify-between gap-4 m-auto">
                   <div className="xl:w-[72%] w-full flex flex-col xl:gap-4">
                     <div className="w-full lg:hidden block bg-white py-2 px-3 shadow z-40 sticky top-15">
@@ -364,8 +377,11 @@ function ProjectViewPage({ purl }) {
                           <div className="mt-3 flex justify-center md:hidden">
                             <button
                               onClick={() =>
-                                handleFormModel("Download Brochure")
-                              }
+                            handleFormModel(
+                              project?.projectName,
+                              "Download Brochure"
+                            )
+                          }
                               className="some-class py-2 px-4 text-white cursor-pointer flex justify-center items-center rounded gap-2 text-sm"
                             >
                               <FaDownload /> Download Brochure
@@ -374,8 +390,11 @@ function ProjectViewPage({ purl }) {
                           <div className="mt-2 flex justify-center md:hidden">
                             <button
                               onClick={() =>
-                                handleFormModel("Download Price Cost")
-                              }
+                            handleFormModel(
+                              project?.projectName,
+                              "Download Price Cost"
+                            )
+                          }
                               className="some-class py-2 px-4 text-white cursor-pointer flex justify-center items-center rounded gap-2 text-sm"
                             >
                               <FaDownload /> Download Price Cost
@@ -444,9 +463,6 @@ function ProjectViewPage({ purl }) {
                 <FormModel />
                 <BrochureForm/>
               </>
-            )}
-          </>
-        )}
       </div>
       <BottomBar/>
     </>
