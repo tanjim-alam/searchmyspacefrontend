@@ -53,7 +53,7 @@ function Footer() {
                                     <FaLocationDot />
                                 </span>
                                 <p>
-                                    No-11, 2nd Floor, Arya Hub Mall, Whitefield, Bengaluru, Karnataka 560066
+                                    No-11, 2nd Floor, Arya Hub, Whitefield, Bengaluru, Karnataka 560066
                                 </p>
                             </div>
                             <div className="flex items-center gap-1"> 
