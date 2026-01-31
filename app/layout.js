@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Brikzy – Buy Property Across India | Verified Real Estate Projects & Listings",
-  description: "Brikzy is your trusted real estate partner across India, offering verified residential and commercial properties in top cities. Discover luxury apartments, plots, and new project launches from leading developers—all in one place.",
-  keywords: "Brikzy, real estate India, property for sale, buy apartment India, flats for sale, residential projects India, real estate platform, plots in India, new project launches, luxury apartments India, property listings, property investment India",
+  title: "Livexcellence – Buy Property Across India | Verified Real Estate Projects & Listings",
+  description: "Livexcellence is your trusted real estate partner across India, offering verified residential and commercial properties in top cities. Discover luxury apartments, plots, and new project launches from leading developers—all in one place.",
+  keywords: "Livexcellence, real estate India, property for sale, buy apartment India, flats for sale, residential projects India, real estate platform, plots in India, new project launches, luxury apartments India, property listings, property investment India",
   alternates: {
-    canonical: 'https://www.brikzy.in/',
+    canonical: 'https://www.livexcellence.in/',
   },
   other: {
     "google-site-verification": "x8hC-JPBXHCYvTOSCftj2yC1XoM1oh9dTKzfE33SCkM",
