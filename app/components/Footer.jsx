@@ -17,7 +17,7 @@ function Footer() {
                         <h4 className="text-white text-xl font-medium">About Us</h4>
                         <div className="text-gray-300 flex flex-col gap-3 mt-2">
                            <p>
-                           At Brikzy, we prioritize building reliable relationships and understanding each customer's needs to streamline buying or selling property. We are committed to excellence and dedicated to ensuring a seamless and impactful experience for every transaction.
+                           At Livexcellence, we prioritize building reliable relationships and understanding each customer's needs to streamline buying or selling property. We are committed to excellence and dedicated to ensuring a seamless and impactful experience for every transaction.
                            </p>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ function Footer() {
                             <span className='p-2 bg-[var(--primary)] rounded-full '>
                                     <IoMail />
                                 </span>
-                                <a href="">info@brikzy.in</a>
+                                <a href="">info@livexcellence.in</a>
                             </div>
                         </div>
                         <div className="mt-5 flex gap-4">
@@ -103,7 +103,7 @@ function Footer() {
                 Copyright 
                 <FaRegCopyright/> {year}
             </span>
-            Brikzy Realty | All Rights Resevered
+            Livexcellence Realty | All Rights Resevered
             
         </p>
      </div>
