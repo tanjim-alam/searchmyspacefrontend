@@ -47,7 +47,7 @@ function Header() {
           <div>
             <Link href="/">
               <img
-                src="/logo.png"
+                src="/logo.jpeg"
                 alt="Logo"
                 className="w-[150px]"
               />
