@@ -39,8 +39,8 @@ function Footer() {
                             <Link href="/contact.html">Contact Us</Link>
                             <Link href="#">Career</Link>
                             <Link href="#">Terms of use</Link>
-                            <Link href="#">Privacy policy</Link>
-                            <Link href="#">FAQs</Link>
+                            <Link href="/privacy-policy">Privacy policy</Link>
+                            <Link href="/terms-and-conditions">Terms & Conditions</Link>
                         </div>
                     </div>
                     <div>
