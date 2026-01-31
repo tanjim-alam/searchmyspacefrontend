@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.brikzy.in
+
+# Sitemaps
+Sitemap: https://www.brikzy.in/sitemap.xml
